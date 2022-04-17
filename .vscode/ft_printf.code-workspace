@@ -7,5 +7,6 @@
 	"settings": {
 		"editor.rulers": [80],
 		"editor.insertSpaces": false,
+		"editor.mouseWheelZoom": true,
 	}
 }
