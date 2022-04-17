@@ -1,4 +1,4 @@
-NAME	=	ft_printf
+NAME	=	libftprintf
 
 CC		=	gcc
 FLAGS	=	-Wall -Werror -Wextra
@@ -20,9 +20,6 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
-
-run: re
-	@./$(NAME)
 
 norm:
 	@norminette -R CheckForbiddenSourceHeader
