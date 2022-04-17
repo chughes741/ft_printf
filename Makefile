@@ -11,15 +11,18 @@ RM 		=	rm -rf
 all: $(NAME)
 
 $(NAME): $(SRC)
-	$(CC) $(FLAGS) $(LIBS) $(SRC) -o $(NAME)
+	@$(CC) $(FLAGS) $(LIBS) $(SRC) -o $(NAME)
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
 run: re
-	./$(NAME)
+	@./$(NAME)
+
+norm:
+	@norminette -R CheckForbiddenSourceHeader
