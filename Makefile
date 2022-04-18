@@ -4,7 +4,7 @@ CC		=	gcc
 FLAGS	=	-Wall -Werror -Wextra
 SRC		=	*.c
 LIBS	=
-OBJ		=
+OBJ		=	$(SRC:.c=.o)
 RM 		=	rm -rf
 
 # Targets
