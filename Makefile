@@ -1,37 +1,34 @@
 NAME	=	libftprintf.a
 
 CC		=	gcc
-CFLAGS	=	-I$(IDIR)-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra
 AFLAGS	=	-crs
 RM 		=	rm -rf
 
-SRCS		=	$(wildcard $(SDIR)*.c)
-OBJS		=	$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRCS))
+SRCS	=	$(wildcard *.c)
+OBJS	=	$(SRCS:.c=.o)
 
-IDIR	=	include
-SDIR	=	src
-ODIR	=	obj
 LDIR	=	libft
 
 # Targets
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar $(AFLAGS) $@ $^
+$(NAME): $(OBJS) libft/libft.a
+	@ar $(AFLAGS) $@ $^
 
-$(ODIR)/%.o: $(SDIR)/%.c
-	$(CC) $(CFLAGS) -o $@ -c $^
+$(OBJS): $(SRCS)
+	@$(CC) $(CFLAGS) -o $@ -c $^
 
-libft:
-	cd ../$(LDIR) ; Make all
+$(LDIR)/libft.a:
+	@cd $(LDIR) && make
 
+# Removes objects
 clean:
-	$(RM) $(ODIR)/*
+	@$(RM) $(OBJS)
 
+# Removes objects and executables
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
+# Removes objects and executables and remakes
 re: fclean all
-
-norm:
-	@norminette -R CheckForbiddenSourceHeader
