@@ -31,8 +31,8 @@ typedef struct mod_list
 	int				skip;
 }					modifiers;
 
-int			ft_printf(const char *format, ...);
+int			ft_printf(const char *format, ...); // Returns # of c printed
 modifiers	*get_mods(const char *format);
-void		print_arg(modifiers *mods, va_list *arg);
+int			print_arg(modifiers *mods, va_list *arg); // Returns # of c printed
 
 #endif
