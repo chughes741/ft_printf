@@ -22,7 +22,7 @@
 #define TEST_NAME(test_name) print_test(test_name)
 
 void print_title(char* title) {
-	printf("%s", cyan);
+	printf("%s\n", cyan);
 	printf("\t-*-*- %s -*-*-", title);
 	printf("%s\n\n", default);
 }
