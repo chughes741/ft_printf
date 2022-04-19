@@ -32,3 +32,10 @@ fclean: clean
 
 # Removes objects and executables and remakes
 re: fclean all
+
+# Test function used with main
+test:
+	@clear
+	@$(CC) $(CFLAGS) -o test $(SRCS)
+	@./test
+	@rm test
