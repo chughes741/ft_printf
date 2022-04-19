@@ -70,7 +70,7 @@ int main() {
 	printf("\nLC: %x\n\n", 0xFEFAB1);
 
 	TEST_NAME("Unsigned hex (uppercase)");
-	ft_printf("FT: %X\n", 0xFEFAB1);
+	ft_printf("FT: %X", 0xFEFAB1);
 	printf("\nLC: %X\n\n", 0xFEFAB1);
 
 	/*	Bonus section	*/
