@@ -13,7 +13,7 @@ LDIR	=	libft
 # Targets
 all: $(NAME)
 
-$(NAME): $(OBJS) libft/libft.a
+$(NAME): $(OBJS) $(LDIR)/libft.a
 	@ar $(AFLAGS) $@ $^
 
 $(OBJS): $(SRCS)
@@ -36,6 +36,6 @@ re: fclean all
 # Test function used with main
 test:
 	@clear
-	@$(CC) $(CFLAGS) -o test $(SRCS)
+	@$(CC) $(CFLAGS) -o test $(SRCS) $(LDIR)/libft.a
 	@./test
 	@rm test
