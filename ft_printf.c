@@ -42,9 +42,9 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			mods = get_mods(format); // Generates mods list
-			print_arg(mods, va_arg(args, int));
+			print_arg(mods, args);
 			format += mods->skip;
-
+			va_arg(args, int);
 		}
 		ft_putchar_fd(*format, 1);
 		format++;
