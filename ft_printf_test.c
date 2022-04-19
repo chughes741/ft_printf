@@ -5,6 +5,8 @@
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define default "\033[0m"
 #define black "\033[1;30m"
@@ -16,52 +18,85 @@
 #define cyan "\033[1;36m"
 #define white "\033[1;37m"
 
+#define TITLE(title) print_title(title)
+#define TEST_NAME(test_name) print_test(test_name)
+
+void print_title(char* title) {
+	printf("%s", cyan);
+	printf("\t-*-*- %s -*-*-", title);
+	printf("%s\n\n", default);
+}
+
+void print_test(char* test_name) {
+	printf("%s", blue);
+	printf("%s", test_name);
+	printf("%s\n", default);
+}
+
 int main() {
 	/*	Standard replacements	*/
-	printf("%s\tMain Functions:\n%s", cyan, default);
-	ft_printf("Standard string test - FT\n");
-	printf("Standard string test - LC\n\n");
+	TITLE("Main Functions");
 
-	ft_printf("Char insert test: %c - FT\n", 'c');
-	printf("Char insert test: %c - LC\n\n", 'c');
+	TEST_NAME("Standard string");
+	ft_printf("FT: test");
+	printf("\nLC: test\n\n");
 
-	ft_printf("String insert test: %s - FT\n", "test");
-	printf("String insert test: %s - LC\n\n", "test");
+	TEST_NAME("Char insert");
+	ft_printf("FT: %c", 'c');
+	printf("\nLC: %c\n\n", 'c');
 
-	ft_printf("Pointer address test: %p - FT\n", NULL);
-	printf("Pointer addres test: %p - LC\n\n", NULL);
+	TEST_NAME("String insert");
+	ft_printf("FT: %s", "test");
+	printf("\nLC: %s\n\n", "test");
 
-	ft_printf("Signed decimal int test: %d - FT\n", -666);
-	printf("Signed decimal int test: %d - LC\n\n", -666);
+	TEST_NAME("Pointer address");
+	ft_printf("FT: %p", NULL);
+	printf("\nLC: %p\n\n", NULL);
 
-	ft_printf("Signed decimal int test: %i - FT\n", 69420);
-	printf("Signed decimal int test: %i - LC\n\n", 69420);
+	TEST_NAME("Signed decimal int");
+	ft_printf("FT: %d", -666);
+	printf("\nLC: %d\n\n", -666);
 
-	ft_printf("Unsigned decimal int test: %u - FT\n", 220000000);
-	printf("Unsigned decimal int test: %u - LC\n\n", 220000000);
+	TEST_NAME("%sSigned decimal int");
+	ft_printf("FT: %i", 69420);
+	printf("\nLC: %i\n\n", 69420);
 
-	ft_printf("Unsigned hex int (lowercase) test: %x - FT\n", 0xFEFAB1);
-	printf("Unsigned hex int (lowercase) test: %x - LC\n\n", 0xFEFAB1);
+	TEST_NAME("Unsigned decimal int");
+	ft_printf("FT: %u", 220000000);
+	printf("\nLC: %u\n\n", 220000000);
 
-	ft_printf("Unsigned hex int (uppercase) test: %X - FT\n", 0xFEFAB1);
-	printf("Unsigned hex int (uppercase) test: %X - LC\n\n", 0xFEFAB1);
+	TEST_NAME("Unsigned hex (lowercase)");
+	ft_printf("FT: %x", 0xFEFAB1);
+	printf("\nLC: %x\n\n", 0xFEFAB1);
+
+	TEST_NAME("Unsigned hex (uppercase)");
+	ft_printf("FT: %X\n", 0xFEFAB1);
+	printf("\nLC: %X\n\n", 0xFEFAB1);
 
 	/*	Bonus section	*/
-	printf("%s\n\tBonus Section:\n%s", cyan, default);
-	ft_printf("Left justify test: %-.10i - FT\n", 123); // TODO write test
-	printf("Left justify test: %-.10i - LC\n\n", 123);
+	TITLE("Bonus Functions");
 
-	ft_printf("Dot precision test: %0.10i - FT\n", 123); // TODO write test
-	printf("Dot precision test: %0.10i - LC\n\n", 123);
+	TEST_NAME("Left justify");
+	ft_printf("FT: %-.10i", 123);
+	printf("\nLC: %-.10i\n\n", 123);
 
-	ft_printf("Hex prefix test: %#X - FT\n", 0xFEFAB1); // TODO write test
-	printf("Hex prefix test: %#X - LC\n\n", 0xFEFAB1);
+	TEST_NAME("Dot precision");
+	ft_printf("FT: %0.10i", 123);
+	printf("\nLC: %0.10i\n\n", 123);
 
-	ft_printf("Blank sign test: % i - FT\n", 100); // TODO write test
-	printf("Blank sign test: % i - LC\n\n", 100);
+	TEST_NAME("Hex prefix");
+	ft_printf("FT: %#X", 0xFEFAB1);
+	printf("\nLC: %#X\n\n", 0xFEFAB1);
 
-	ft_printf("Forced sign test: %+i - FT\n", 100); // TODO write test
-	printf("Forced sign test: %+i - LC\n\n", 100);
+	TEST_NAME("Blank sign");
+	ft_printf("FT: % i", 100);
+	printf("\nLC: % i\n\n", 100);
+
+	TEST_NAME("Forced sign");
+	ft_printf("FT: %+i", 100);
+	printf("\nLC: %+i\n\n", 100);
+
+	printf("%sYou are a failure!\n%s", red, default);
 
 	return 0;
 }
