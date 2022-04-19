@@ -18,6 +18,21 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_printf(const char *format, ...);
+typedef struct mod_list
+{
+	unsigned int	dash : 1;
+	unsigned int	plus : 1;
+	unsigned int	space : 1;
+	unsigned int	hash : 1;
+	unsigned int	zero : 1;
+	int				width;
+	int				precision;
+	char			specifier;
+	int				skip;
+}					modifiers;
+
+int			ft_printf(const char *format, ...);
+modifiers	*get_mods(const char *format);
+void		print_arg(modifiers *mods, va_list *arg);
 
 #endif
