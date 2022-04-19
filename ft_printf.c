@@ -22,15 +22,33 @@
 		'+'	sign of number is always displayed
 		' '	blank space instead of sign
 		'#'	adds hex prefixes, like 0x
+
+	VA functions:
+		va_start()	- opens the list
+		va_arg()	- access next item in the list
+		va_end()	- close the list
+
+	%[flags][width][.precision][length]specifier
 */
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	args;
-
-	ft_putstr_fd((char *)format, 1);
+	va_list		args;
+	modifiers	*mods;
 
 	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			mods = get_mods(format); // Generates mods list
+			print_arg(mods, va_arg(args, int));
+			format += mods->skip;
+
+		}
+		ft_putchar_fd(*format, 1);
+		format++;
+	}
 	va_end(args);
 	return (0);
 }
