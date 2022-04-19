@@ -28,6 +28,8 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 
+	ft_putstr_fd((char *)format, 1);
+
 	va_start(args, format);
 	va_end(args);
 	return (0);
