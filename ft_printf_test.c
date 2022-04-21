@@ -33,72 +33,95 @@ void print_test(char* test_name) {
 	printf("%s\n", default);
 }
 
+void count_test(int x, int y) {
+	x == y ? printf("%sCount matches%s\n\n", green, default) : \
+			 printf("%sCount does not match%s\n\n", red, default); 
+}
+
 int main() {
+	int x = 0;
+	int y = 0;
+	
 	/*	Standard replacements	*/
 	TITLE("Main Functions");
 
 	TEST_NAME("Standard string");
-	ft_printf("FT: test");
-	printf("\nLC: test\n\n");
+	x = ft_printf("FT: test");
+	y = printf("\nLC: test\n");
+	count_test(x, y);
 
 	TEST_NAME("Char insert");
-	ft_printf("FT: %c", 'c');
-	printf("\nLC: %c\n\n", 'c');
+	x = ft_printf("FT: %c", 'c');
+	y = printf("\nLC: %c\n", 'c');
+	count_test(x, y);
 
 	TEST_NAME("String insert");
-	ft_printf("FT: %s", "test");
-	printf("\nLC: %s\n\n", "test");
+	x = ft_printf("FT: %s", "test");
+	y = printf("\nLC: %s\n", "test");
+	count_test(x, y);
 
 	TEST_NAME("Pointer address");
-	ft_printf("FT: %p", NULL);
-	printf("\nLC: %p\n\n", NULL);
+	x = ft_printf("FT: %p", NULL);
+	y = printf("\nLC: %p\n", NULL);
+	count_test(x, y);
 
 	TEST_NAME("Signed decimal int");
-	ft_printf("FT: %d", -666);
-	printf("\nLC: %d\n\n", -666);
+	x = ft_printf("FT: %d", -666);
+	y = printf("\nLC: %d\n", -666);
+	count_test(x, y);
 
-	TEST_NAME("%sSigned decimal int");
-	ft_printf("FT: %i", 69420);
-	printf("\nLC: %i\n\n", 69420);
+	TEST_NAME("Signed decimal int");
+	x = ft_printf("FT: %i", 69420);
+	y = printf("\nLC: %i\n", 69420);
+	count_test(x, y);
 
 	TEST_NAME("Unsigned decimal int");
-	ft_printf("FT: %u", 220000000);
-	printf("\nLC: %u\n\n", 220000000);
+	x = ft_printf("FT: %u", 220000000);
+	y = printf("\nLC: %u\n", 220000000);
+	count_test(x, y);
 
 	TEST_NAME("Unsigned hex (lowercase)");
-	ft_printf("FT: %x", 0xFEFAB1);
-	printf("\nLC: %x\n\n", 0xFEFAB1);
+	x = ft_printf("FT: %x", 0xFEFAB1);
+	y = printf("\nLC: %x\n", 0xFEFAB1);
+	count_test(x, y);
 
 	TEST_NAME("Unsigned hex (uppercase)");
-	ft_printf("FT: %X", 0xFEFAB1);
-	printf("\nLC: %X\n\n", 0xFEFAB1);
+	x = ft_printf("FT: %X", 0xFEFAB1);
+	y = printf("\nLC: %X\n", 0xFEFAB1);
+	count_test(x, y);
 
 	TEST_NAME("Print %%");
-	ft_printf("FT: %%");
-	printf("\nLC: %%\n\n");
+	x = ft_printf("FT: %%");
+	y = printf("\nLC: %%\n");
+	count_test(x, y);
 
 	/*	Bonus section	*/
 	TITLE("Bonus Functions");
 
 	TEST_NAME("Left justify");
-	ft_printf("FT: %-.10i", 123);
-	printf("\nLC: %-.10i\n\n", 123);
+	x = ft_printf("FT: %-.10i", 123);
+	y = printf("\nLC: %-.10i\n", 123);
+	count_test(x, y);
 
 	TEST_NAME("Dot precision");
-	ft_printf("FT: %0.10i", 123);
-	printf("\nLC: %0.10i\n\n", 123);
+	x = ft_printf("FT: %0.10i", 123);
+	y = printf("\nLC: %0.10i\n", 123);
+	count_test(x, y);
 
 	TEST_NAME("Hex prefix");
-	ft_printf("FT: %#X", 0xFEFAB1);
-	printf("\nLC: %#X\n\n", 0xFEFAB1);
+	x = ft_printf("FT: %#X", 0xFEFAB1);
+	y = printf("\nLC: %#X\n", 0xFEFAB1);
+	count_test(x, y);
 
 	TEST_NAME("Blank sign");
-	ft_printf("FT: % i", 100);
-	printf("\nLC: % i\n\n", 100);
+	x = ft_printf("FT: % i", 100);
+	y = printf("\nLC: % i\n", 100);
+	count_test(x, y);
 
 	TEST_NAME("Forced sign");
-	ft_printf("FT: %+i", 100);
-	printf("\nLC: %+i\n\n", 100);
+	x = ft_printf("FT: %+i", 100);
+	y = printf("\nLC: %+i\n", 100);
+	count_test(x, y);
 
 	printf("%sYou are a failure!\n%s", red, default);
 
