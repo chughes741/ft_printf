@@ -42,7 +42,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			mods = ft_get_mods(format); // Generates mods list
-			ft_print_arg(mods, args);
+			ft_print_arg(mods, &args);
 			format += mods->skip;
 			va_arg(args, int);
 		}
