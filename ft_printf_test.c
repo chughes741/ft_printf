@@ -73,6 +73,10 @@ int main() {
 	ft_printf("FT: %X", 0xFEFAB1);
 	printf("\nLC: %X\n\n", 0xFEFAB1);
 
+	TEST_NAME("Print %%");
+	ft_printf("FT: %%");
+	printf("\nLC: %%\n\n");
+
 	/*	Bonus section	*/
 	TITLE("Bonus Functions");
 
