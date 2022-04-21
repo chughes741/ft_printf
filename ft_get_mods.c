@@ -51,17 +51,20 @@ static void ft_get_precision(modifiers *mods, const char *format)
 modifiers	*ft_get_mods(const char *format)
 {
 	modifiers	*mods;
+	char		*fp;
 
+	fp = (char *)format;
 	mods = ft_calloc(1, sizeof(modifiers));
 	if (mods == NULL)
 		return (NULL);
-	ft_get_flags(mods, format);
+	mods->skip = 1;
+	ft_get_flags(mods, fp);
 	mods->width = -1;
 	mods->precision = -1;
-	if (ft_isdigit((int)*format))
-		ft_get_width(mods, format);
-	if (*format == '.' && mods->width >= 0)
-		ft_get_precision(mods, format);
-	mods->specifier = (char)*format; 
+	if (ft_isdigit((int)*fp))
+		ft_get_width(mods, fp);
+	if (*fp == '.' && mods->width >= 0)
+		ft_get_precision(mods, fp);
+	mods->specifier = (char)*fp; 
 	return (mods);
 }
