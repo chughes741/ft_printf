@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_mods.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chughes <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*   By: chughes <chughes@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 11:26:34 by chughes           #+#    #+#             */
 /*   Updated: 2022/04/21 11:26:37 by chughes          ###   ########.fr       */
