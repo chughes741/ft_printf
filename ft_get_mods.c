@@ -36,11 +36,15 @@ static void	ft_get_flags(modifiers *mods, const char *format)
 
 static void	ft_get_width(modifiers *mods, const char *format)
 {
+	(void)mods;
+	(void)format;
 	return ;
 }
 
 static void ft_get_precision(modifiers *mods, const char *format)
 {
+	(void)mods;
+	(void)format;
 	return ;
 }
 
