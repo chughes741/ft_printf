@@ -32,7 +32,7 @@ typedef struct mod_list
 }					modifiers;
 
 int			ft_printf(const char *format, ...); // Returns # of c printed
-modifiers	*get_mods(const char *format);
-int			print_arg(modifiers *mods, va_list *arg); // Returns # of c printed
+modifiers	*ft_get_mods(const char *format);
+int			ft_print_arg(modifiers *mods, va_list *arg); // Returns # of c printed
 
 #endif
