@@ -35,7 +35,9 @@ int	ft_printf(const char *format, ...)
 {
 	va_list		args;
 	modifiers	*mods;
+	int			count;
 
+	count = 0;
 	va_start(args, format);
 	while (*format)
 	{
@@ -48,8 +50,9 @@ int	ft_printf(const char *format, ...)
 			va_arg(args, int);
 		}
 		ft_putchar_fd(*format, 1);
+		count++;
 		format++;
 	}
 	va_end(args);
-	return (0);
+	return (count);
 }
