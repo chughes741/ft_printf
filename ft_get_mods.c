@@ -34,17 +34,17 @@ static void	ft_get_flags(modifiers *mods, const char *format)
 	return ;
 }
 
-static void	ft_get_width(modifiers *mods, const char *format)
+static void	ft_get_num(modifiers *mods, const char *format)
 {
-	(void)mods;
-	(void)format;
-	return ;
-}
+	int count;
 
-static void ft_get_precision(modifiers *mods, const char *format)
-{
-	(void)mods;
-	(void)format;
+	count = 0;
+	if (format[count] == '.')
+		count++;
+	while (format[count] && format[count] >= '0' && format[count] <= '9')
+		count++;
+	mods->width = ft_atoi(format);
+	mods->skip += count;
 	return ;
 }
 
@@ -62,9 +62,9 @@ modifiers	*ft_get_mods(const char *format)
 	mods->width = -1;
 	mods->precision = -1;
 	if (ft_isdigit((int)*fp))
-		ft_get_width(mods, fp);
+		ft_get_num(mods, fp);
 	if (*fp == '.' && mods->width >= 0)
-		ft_get_precision(mods, fp);
+		ft_get_num(mods, fp);
 	mods->specifier = (char)*fp; 
 	return (mods);
 }
