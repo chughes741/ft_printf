@@ -99,8 +99,18 @@ int main() {
 	TITLE("Bonus Functions");
 
 	TEST_NAME("Left justify");
-	x = ft_printf("FT: %-.10i", 123);
-	y = printf("\nLC: %-.10i\n", 123);
+	x = ft_printf("FT: %-10itest", 123);
+	y = printf("\nLC: %-10itest\n", 123);
+	count_test(x, y);
+
+	TEST_NAME("Int zero padding");
+	x = ft_printf("FT: %10i", 12345);
+	y = printf("\nLC: %010i\n", 12345);
+	count_test(x, y);
+
+	TEST_NAME("Str width padding");
+	x = ft_printf("FT: %10s", "Hello");
+	y = printf("\nLC: %10s\n", "Hello");
 	count_test(x, y);
 
 	TEST_NAME("Dot precision");
