@@ -44,7 +44,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			mods = ft_get_mods(format);
-			ft_print_arg(mods, &args);
+			count += ft_print_arg(mods, &args);
 			format += mods->skip;
 			free(mods);
 			va_arg(args, int);
