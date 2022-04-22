@@ -12,9 +12,35 @@
 
 #include "ft_printf.h"
 
-int	ft_print_arg(modifiers *mod, va_list *arg)
+static int	put_nbr(modifiers *mod, va_list *arg)
 {
-	(void)mod;
 	(void)arg;
-	return 0;
+	return (0);
+}
+
+static int	put_str(modifiers *mod, va_list *arg)
+{
+	(void)arg;
+	return (0);
+}
+
+static int	put_hex(modifiers *mod, va_list *arg)
+{
+	(void)arg;
+	return (0);
+}
+
+int	ft_print_arg(modifiers *mod, va_list *arg)
+{ // TODO add count
+	int	count;
+
+	count = 0;
+	if(mod->specifier == 'i' || mod->specifier == 'd' || mod->specifier == 'u')
+		count =+ put_nbr(mod, arg); // TODO conversion, account for u
+	if(mod->specifier == 'c' || mod->specifier == 's')
+		count += put_str (mod, arg);
+	if(mod->specifier == 'x' || mod->specifier == 'X')
+		count += put_hex(mod, arg);
+	// Add print for pointers
+	return (count);
 }
