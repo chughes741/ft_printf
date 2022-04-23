@@ -12,20 +12,28 @@
 
 #include "ft_printf.h"
 
+static int	ft_htos()
+{
+	return (0);
+}
+
 static int	put_nbr(modifiers *mod, va_list *arg)
 {
+	(void)mod;
 	(void)arg;
 	return (0);
 }
 
 static int	put_str(modifiers *mod, va_list *arg)
 {
+	(void)mod;
 	(void)arg;
 	return (0);
 }
 
 static int	put_hex(modifiers *mod, va_list *arg)
 {
+	(void)mod;
 	(void)arg;
 	return (0);
 }
@@ -36,7 +44,7 @@ int	ft_print_arg(modifiers *mod, va_list *arg)
 
 	count = 0;
 	if(mod->specifier == 'i' || mod->specifier == 'd' || mod->specifier == 'u')
-		count =+ put_nbr(mod, arg); // TODO conversion, account for u
+		count += put_nbr(mod, arg); // TODO conversion, account for u
 	if(mod->specifier == 'c' || mod->specifier == 's')
 		count += put_str (mod, arg);
 	if(mod->specifier == 'x' || mod->specifier == 'X')

@@ -33,6 +33,13 @@ typedef struct mod_list
 	int				skip;
 }					modifiers;
 
+typedef union argument
+{
+	char			c_arg;
+	int				i_arg;
+	unsigned int	u_arg;
+} arg_union;
+
 int			ft_printf(const char *format, ...); // Returns # of c printed
 modifiers	*ft_get_mods(const char *format);
 int			ft_print_arg(modifiers *mods, va_list *arg); // Returns # of c printed
