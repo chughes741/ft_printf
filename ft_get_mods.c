@@ -66,16 +66,16 @@ modifiers	*ft_get_mods(const char *format)
 	mods->precision = -1;
 	if (ft_isdigit((int)*fp))
 		fp = ft_get_num(mods, fp, &mods->width);
-	if (*fp == '.' && mods->width >= 0)
+	if (*fp == '.')
 		fp = ft_get_num(mods, fp, &mods->precision);
 	mods->specifier = (char)*fp; 
 	return (mods);
 }
 
 int main() {
-	modifiers *mods = ft_get_mods("%-10.3992i");
+	modifiers *mods = ft_get_mods("%.3992i");
 	printf("\n%u\n%u\n%u\n%u\n%u\n%i\n%i\n%c\n%i\n", mods->dash, mods->plus,  \
 			mods->space, mods->hash, mods->zero, mods->width, mods->precision, \
 			mods->specifier, mods->skip);
-	return  0;
+	return 0;
 }
