@@ -133,7 +133,5 @@ int main() {
 	y = printf("\nLC: %+i\n", 100);
 	count_test(x, y);
 
-	printf("%sYou are a failure!\n%s", red, default);
-
 	return 0;
 }
