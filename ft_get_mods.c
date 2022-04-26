@@ -14,7 +14,7 @@
 
 // %[flags][width][.precision]specifier
 
-static void	ft_get_flags(modifiers *mods, const char *format)
+static char	*ft_get_flags(modifiers *mods, char *format)
 {
 	while (ft_strchr("-+ #0", *format))
 	{
@@ -31,21 +31,24 @@ static void	ft_get_flags(modifiers *mods, const char *format)
 			mods->zero = 1;
 		format++;
 	}
-	return ;
+	return (format);
 }
 
-static void	ft_get_num(modifiers *mods, const char *format)
+static char	*ft_get_num(modifiers *mods, char *format, int *num)
 {
 	int count;
 
 	count = 0;
-	if (format[count] == '.')
-		count++;
+	if (*format == '.')
+	{
+		format++;
+		mods->skip += 1;
+	}
 	while (format[count] && format[count] >= '0' && format[count] <= '9')
 		count++;
-	mods->width = ft_atoi(format);
+	*num = ft_atoi(format);
 	mods->skip += count;
-	return ;
+	return (&format[count]);
 }
 
 modifiers	*ft_get_mods(const char *format)
@@ -53,18 +56,26 @@ modifiers	*ft_get_mods(const char *format)
 	modifiers	*mods;
 	char		*fp;
 
-	fp = (char *)format;
+	fp = (char *)(format + 1);
 	mods = ft_calloc(1, sizeof(modifiers));
 	if (mods == NULL)
 		return (NULL);
 	mods->skip = 1;
-	ft_get_flags(mods, fp);
+	fp = ft_get_flags(mods, fp);
 	mods->width = -1;
 	mods->precision = -1;
 	if (ft_isdigit((int)*fp))
-		ft_get_num(mods, fp);
+		fp = ft_get_num(mods, fp, &mods->width);
 	if (*fp == '.' && mods->width >= 0)
-		ft_get_num(mods, fp);
+		fp = ft_get_num(mods, fp, &mods->precision);
 	mods->specifier = (char)*fp; 
 	return (mods);
+}
+
+int main() {
+	modifiers *mods = ft_get_mods("%-10.3992i");
+	printf("\n%u\n%u\n%u\n%u\n%u\n%i\n%i\n%c\n%i\n", mods->dash, mods->plus,  \
+			mods->space, mods->hash, mods->zero, mods->width, mods->precision, \
+			mods->specifier, mods->skip);
+	return  0;
 }
