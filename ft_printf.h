@@ -42,6 +42,6 @@ typedef union argument
 
 int			ft_printf(const char *format, ...); // Returns # of c printed
 modifiers	*ft_get_mods(const char *format);
-int			ft_print_arg(modifiers *mods, va_list *arg); // Returns # of c printed
+int			ft_print_arg(modifiers *mods, void *arg); // Returns # of c printed
 
 #endif

@@ -12,33 +12,28 @@
 
 #include "ft_printf.h"
 
-static int	ft_htos()
-{
-	return (0);
-}
-
-static int	put_nbr(modifiers *mod, va_list *arg)
+static int	put_nbr(modifiers *mod, void *arg)
 {
 	(void)mod;
 	(void)arg;
 	return (0);
 }
 
-static int	put_str(modifiers *mod, va_list *arg)
+static int	put_str(modifiers *mod, void *arg)
 {
 	(void)mod;
 	(void)arg;
 	return (0);
 }
 
-static int	put_hex(modifiers *mod, va_list *arg)
+static int	put_hex(modifiers *mod, void *arg)
 {
 	(void)mod;
 	(void)arg;
 	return (0);
 }
 
-int	ft_print_arg(modifiers *mod, va_list *arg)
+int	ft_print_arg(modifiers *mod, void *arg)
 { // TODO add count
 	int	count;
 

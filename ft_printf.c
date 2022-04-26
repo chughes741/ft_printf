@@ -31,22 +31,6 @@
 	%[flags][width][.precision][length]specifier
 */
 
-static arg_union	*get_arg(char specififer, va_list *args)
-{
-	arg_union	*rtn;
-
-	rtn = ft_calloc(1, sizeof(arg_union));
-	if (rtn == NULL)
-		return (NULL);
-	if (specififer == 'c' || specififer == 's')
-		rtn->c_arg = va_arg(args, char);
-	if (specififer == 'i' || specififer == 'd')
-		rtn->i_arg = va_arg(args, int);
-	if (specififer == 'u')
-		rtn->u_arg = va_arg(args, unsigned int);
-	return (rtn);
-}
-
 int	ft_printf(const char *format, ...)
 {
 	va_list		args;
@@ -60,7 +44,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			mods = ft_get_mods(format);
-			count += ft_print_arg(mods, va_arg(args, int)); // TODO type input
+			count += ft_print_arg(mods, va_arg(args, void *)); // TODO type input
 			format += mods->skip;
 			free(mods);
 		}
