@@ -68,6 +68,6 @@ modifiers	*ft_get_mods(const char *format)
 		fp = ft_get_num(mods, fp, &mods->width);
 	if (*fp == '.')
 		fp = ft_get_num(mods, fp, &mods->precision);
-	mods->specifier = (char)*fp; 
+	mods->specifier = (char)*fp;
 	return (mods);
 }
