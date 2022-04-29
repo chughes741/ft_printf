@@ -31,26 +31,31 @@
 	%[flags][width][.precision][length]specifier
 */
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char *form, ...)
 {
 	va_list		args;
 	modifiers	*mods;
 	int			count;
+	char		*format;
 
+	format = (char *)form;
 	count = 0;
-	va_start(args, format);
+	va_start(args, form);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			mods = ft_get_mods(format);
-			count += ft_print_arg(mods, va_arg(args, void *)); // TODO type input
-			format += mods->skip;
+			ft_print_arg(mods, va_arg(args, void *), &count);
 			free(mods);
+			format++;
+			while (!ft_strchr("%cspdiuxX", *format))
+				format++;
+			format++;
 		}
 		ft_putchar_fd(*format, 1);
-		count++;
 		format++;
+		count++;
 	}
 	va_end(args);
 	return (count);
