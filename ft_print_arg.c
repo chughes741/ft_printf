@@ -12,38 +12,87 @@
 
 #include "ft_printf.h"
 
-static int	put_nbr(modifiers *mod, void *arg)
+static void	put_char(void *arg, int *count)
 {
-	(void)mod;
-	(void)arg;
-	return (0);
+	if (arg)
+	{
+		ft_putchar_fd((char)arg, 1);
+		count += 1;
+	}
+	return ;
 }
 
-static int	put_str(modifiers *mod, void *arg)
+static void	put_str(modifiers *mod, void *arg, int *count)
 {
 	(void)mod;
-	(void)arg;
-	return (0);
+	(void)count;
+	ft_putstr_fd((char *)arg, 1);
+	return ;
 }
 
-static int	put_hex(modifiers *mod, void *arg)
+static void put_ptr(modifiers *mod, void *arg, int *count)
 {
 	(void)mod;
-	(void)arg;
-	return (0);
+	(void)count;
+	char	*str;
+
+	write(1, "0x", 2);
+	str = ft_itoa((int)arg);
+	ft_putstr_fd(str, 1);
+	return ;
 }
 
-int	ft_print_arg(modifiers *mod, void *arg)
-{ // TODO add count
-	int	count;
+static void put_int(modifiers *mod, void *arg, int *count)
+{
+	(void)count;
+	char	*str;
 
-	count = 0;
-	if(mod->specifier == 'i' || mod->specifier == 'd' || mod->specifier == 'u')
-		count += put_nbr(mod, arg); // TODO conversion, account for u
-	if(mod->specifier == 'c' || mod->specifier == 's')
-		count += put_str (mod, arg);
+	if (mod->plus == 1)
+		write(1, "+", 1);
+	str = ft_itoa((int)arg);
+	ft_putstr_fd(str, 1);
+	return ;
+}
+
+static void put_uint(modifiers *mod, void *arg, int *count)
+{
+	(void)mod;
+	(void)count;
+	char	*str;
+
+	str = ft_itoa((int)arg);
+	ft_putstr_fd(str, 1);
+	return ;
+}
+
+static void put_hex(modifiers *mod, void *arg, int *count)
+{
+	(void)count;
+	char	*str;
+
+	if (mod->hash == 1)
+	{
+		write(1, "0", 1);
+		write(1, &mod->specifier, 1);
+	}
+	str = ft_itoa((int)arg);
+	ft_putstr_fd(str, 1);
+	return ;
+}
+
+void	ft_print_arg(modifiers *mod, void *arg, int *count)
+{
+	if(mod->specifier == 'c')
+		put_char(arg, count);
+	if(mod->specifier == 's')
+		put_str(mod, arg, count);
+	if(mod->specifier == 'p')
+		put_ptr(mod, arg, count);
+	if(mod->specifier == 'd' || mod->specifier == 'i')
+		put_int(mod, arg, count);
+	if(mod->specifier == 'u')
+		put_uint(mod, arg, count);
 	if(mod->specifier == 'x' || mod->specifier == 'X')
-		count += put_hex(mod, arg);
-	// Add print for pointers
-	return (count);
+		put_hex(mod, arg, count);
+	return ;
 }
