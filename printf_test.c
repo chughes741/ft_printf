@@ -51,8 +51,8 @@ int main() {
 	count_test(x, y);
 
 	TEST_NAME("Char insert");
-	x = ft_printf("FT: %c", 'c');
-	y = printf("\nLC: %c\n", 'c');
+	x = ft_printf("FT: %c", 'z');
+	y = printf("\nLC: %c\n", 'z');
 	count_test(x, y);
 
 	TEST_NAME("String insert");
