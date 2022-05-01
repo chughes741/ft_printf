@@ -43,5 +43,6 @@ typedef union argument
 int			ft_printf(const char *form, ...); // Returns # of c printed
 modifiers	*ft_get_mods(const char *format);
 void		ft_print_arg(modifiers *mods, void *arg, int *count); // Returns # of c printed
+char		*ft_itohex(int nbr);
 
 #endif
