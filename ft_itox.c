@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itohex.c                                        :+:      :+:    :+:   */
+/*   ft_itox.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chughes <chughes@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*ft_itohex(int nbr)
+char	*ft_itox(int nbr)
 {
 	int		i;
 	char	hexBase[] = "0123456789abcdef";
