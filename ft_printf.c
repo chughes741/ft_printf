@@ -51,7 +51,7 @@ int	ft_printf(const char *form, ...)
 			format++;
 			while (!ft_strchr("%cspdiuxX", *format))
 				format++;
-			format++;
+			// format++;
 		}
 		ft_putchar_fd(*format, 1);
 		format++;

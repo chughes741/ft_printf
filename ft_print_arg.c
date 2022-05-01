@@ -14,11 +14,8 @@
 
 static void	put_char(void *arg, int *count)
 {
-	if (arg)
-	{
-		ft_putchar_fd((char)arg, 1);
-		count += 1;
-	}
+	ft_putchar_fd((char)arg, 1);
+	count += 1;
 	return ;
 }
 
@@ -30,14 +27,13 @@ static void	put_str(modifiers *mod, void *arg, int *count)
 	return ;
 }
 
-static void put_ptr(modifiers *mod, void *arg, int *count)
+static void put_ptr(void *arg, int *count)
 {
-	(void)mod;
-	(void)count;
 	char	*str;
 
+	*count += 10;
 	write(1, "0x", 2);
-	str = ft_itoa((int)arg);
+	str = ft_itox((int)arg);
 	ft_putstr_fd(str, 1);
 	return ;
 }
@@ -75,7 +71,7 @@ static void put_hex(modifiers *mod, void *arg, int *count)
 		write(1, "0", 1);
 		write(1, &mod->specifier, 1);
 	}
-	str = ft_itoa((int)arg);
+	str = ft_itox((int)arg);
 	ft_putstr_fd(str, 1);
 	return ;
 }
@@ -87,7 +83,7 @@ void	ft_print_arg(modifiers *mod, void *arg, int *count)
 	if(mod->specifier == 's')
 		put_str(mod, arg, count);
 	if(mod->specifier == 'p')
-		put_ptr(mod, arg, count);
+		put_ptr(arg, count);
 	if(mod->specifier == 'd' || mod->specifier == 'i')
 		put_int(mod, arg, count);
 	if(mod->specifier == 'u')
