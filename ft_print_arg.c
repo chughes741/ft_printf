@@ -35,6 +35,7 @@ static void put_ptr(void *arg, int *count)
 	write(1, "0x", 2);
 	str = ft_itox((int)arg);
 	ft_putstr_fd(str, 1);
+	free(str);
 	return ;
 }
 
