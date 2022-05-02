@@ -61,8 +61,8 @@ int main() {
 	count_test(x, y);
 
 	TEST_NAME("Pointer address");
-	x = ft_printf("FT: %p", NULL);
-	y = printf("\nLC: %p\n", NULL);
+	x = ft_printf("FT: %p", &y);
+	y = printf("\nLC: %p\n", &y);
 	count_test(x, y);
 
 	TEST_NAME("Signed decimal int");
