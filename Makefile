@@ -15,9 +15,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LDIR)/libft.a
 	@ar $(AFLAGS) $@ $^
-
-$(OBJS): $(SRCS)
-	@$(CC) $(CFLAGS) -o $@ -c $^
+	@$(RM) *.o
 
 $(LDIR)/libft.a:
 	@cd $(LDIR) && make

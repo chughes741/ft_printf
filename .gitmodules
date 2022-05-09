@@ -1,3 +1,6 @@
 [submodule "libft"]
 	path = libft
 	url = https://github.com/chughes741/libft.git
+[submodule "printfTester"]
+	path = printfTester
+	url = https://github.com/Tripouille/printfTester
