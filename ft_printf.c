@@ -48,10 +48,8 @@ int	ft_printf(const char *form, ...)
 			mods = ft_get_mods(format);
 			ft_print_arg(mods, va_arg(args, void *), &count);
 			free(mods);
-			format++;
-			while (!ft_strchr("%cspdiuxX", *format))
+			while (format && !ft_strchr("%cspdiuxX", *format))
 				format++;
-			// format++;
 		}
 		ft_putchar_fd(*format, 1);
 		format++;
