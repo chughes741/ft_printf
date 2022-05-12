@@ -12,84 +12,75 @@
 
 #include "ft_printf.h"
 
-static void	put_char(void *arg, int *count)
+static void ft_space_to_zero(char *str)
 {
-	ft_putchar_fd((char)arg, 1);
-	count += 1;
+	while (str++ && *str == ' ')
+		*str = '0';
 	return ;
 }
 
-static void	put_str(modifiers *mod, void *arg, int *count)
+static char	*ft_set_width(char *str, int width) // TODO join memleak
 {
-	(void)mod;
-	(void)count;
-	ft_putstr_fd((char *)arg, 1);
+	if (ft_strlen(str) >= (unsigned long)width)
+		return (str);
+	width -= ft_strlen(str);
+	while((width--) > 0)
+		str = ft_strjoin(" ", str);
+	return (str);
+}
+
+static void ft_set_precision(char *str, int precision) // TODO positional value
+{
+	while (str[precision++])
+		str[precision] = '0';
+}
+
+static void	ft_left_justify(char *str)
+{
+	char	*temp;
+
+	temp = ft_strtrim(str, " ");
+	ft_memset(str, ' ', ft_strlen(str) * sizeof(char));
+	ft_strlcpy(str, temp, ft_strlen(temp));
+	free(temp);
 	return ;
 }
 
-static void put_ptr(void *arg, int *count)
-{
-	char	*str;
-
-	*count += 10;
-	write(1, "0x", 2);
-	str = ft_itox((int)arg);
-	ft_putstr_fd(str, 1);
-	free(str);
-	return ;
-}
-
-static void put_int(modifiers *mod, void *arg, int *count)
-{
-	(void)count;
-	char	*str;
-
-	if (mod->plus == 1)
-		write(1, "+", 1);
-	str = ft_itoa((int)arg);
-	ft_putstr_fd(str, 1);
-	return ;
-}
-
-static void put_uint(modifiers *mod, void *arg, int *count)
-{
-	(void)mod;
-	(void)count;
-	char	*str;
-
-	str = ft_itoa((int)arg);
-	ft_putstr_fd(str, 1);
-	return ;
-}
-
-static void put_hex(modifiers *mod, void *arg, int *count)
-{
-	(void)count;
-	char	*str;
-
-	if (mod->hash == 1)
-	{
-		write(1, "0", 1);
-		write(1, &mod->specifier, 1);
-	}
-	str = ft_itox((int)arg);
-	ft_putstr_fd(str, 1);
-	return ;
+static char	*ft_format(modifiers *mod, char *str)
+{ // TODO fix leaks when strjoin is called
+	if (mod->precision >= 0)
+		ft_set_precision(str, mod->precision);
+	if (mod->width >= 0)
+		str = ft_set_width(str, mod->width);
+	if (mod->hash || mod->specifier == 'p')
+		str = ft_strjoin("0x", str);
+	if (mod->plus)
+		str = ft_strjoin("+", str);
+	if (mod->dash)
+		ft_left_justify(str);
+	if (mod->space && str[0] != ' ')
+		str = ft_strjoin(" ", str);
+	if (mod->zero)
+		ft_space_to_zero(str);
+	return (str);
 }
 
 void	ft_print_arg(modifiers *mod, void *arg, int *count)
 {
-	if(mod->specifier == 'c')
-		put_char(arg, count);
-	if(mod->specifier == 's')
-		put_str(mod, arg, count);
-	if(mod->specifier == 'p')
-		put_ptr(arg, count);
-	if(mod->specifier == 'd' || mod->specifier == 'i')
-		put_int(mod, arg, count);
-	if(mod->specifier == 'u')
-		put_uint(mod, arg, count);
-	if(mod->specifier == 'x' || mod->specifier == 'X')
-		put_hex(mod, arg, count);
+	char	*output;
+	if(mod->specifier == 'c' || mod->specifier == 's')
+		output = ft_strdup((char *)arg);
+	if(mod->specifier == 'd' || mod->specifier == 'i' || \
+	mod->specifier == 'u')
+		output = ft_itoa(*((int *)arg)); // TODO modify itoa for unsigned
+	if(mod->specifier == 'x' || mod->specifier == 'X' || \
+	mod->specifier == 'p')
+		output = ft_itox(*((int *)arg)); // TODO fix 0's in itox
+	if (output == NULL)
+		return ;
+	output = ft_format(mod, output);
+	ft_putstr_fd(output, 1);
+	*count += ft_strlen(output);
+	free(output);
 	return ;
 }
