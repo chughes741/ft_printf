@@ -33,7 +33,7 @@ static char	*ft_get_flags(modifiers *mods, char *format)
 	return (format);
 }
 
-static char	*ft_get_num(modifiers *mods, char *format, int *num)
+static char	*ft_get_num(char *format, int *num)
 {
 	int count;
 
@@ -59,9 +59,9 @@ modifiers	*ft_get_mods(const char *format)
 	mods->width = -1;
 	mods->precision = -1;
 	if (ft_isdigit((int)*fp))
-		fp = ft_get_num(mods, fp, &mods->width);
+		fp = ft_get_num(fp, &mods->width);
 	if (*fp == '.')
-		fp = ft_get_num(mods, fp, &mods->precision);
+		fp = ft_get_num(fp, &mods->precision);
 	mods->specifier = (char)*fp;
 	return (mods);
 }
