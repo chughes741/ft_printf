@@ -29,14 +29,19 @@ clean:
 # Removes objects and executables
 fclean: clean
 	@$(RM) $(NAME)
-	@$(RM) debug_printf*
 
 # Removes objects and executables and remakes
 re: fclean all
+
+
+
+# Removes debug files
+dclean: fclean
+	@$(RM) *.dSYM
 
 # Test function used with main
 test:
 	@clear
 	@$(CC) $(CFLAGS) -o test $(SRCS) $(LDIR)/libft.a
 	@./test
-	@rm test
+	@$(RM) test
