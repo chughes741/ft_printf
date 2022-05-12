@@ -29,6 +29,7 @@ clean:
 # Removes objects and executables
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) debug_printf*
 
 # Removes objects and executables and remakes
 re: fclean all
