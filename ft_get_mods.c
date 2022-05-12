@@ -18,7 +18,6 @@ static char	*ft_get_flags(modifiers *mods, char *format)
 {
 	while (ft_strchr("-+ #0", *format))
 	{
-		mods->skip += 1;
 		if (*format == '-')
 			mods->dash = 1;
 		if (*format == '+')
@@ -40,14 +39,10 @@ static char	*ft_get_num(modifiers *mods, char *format, int *num)
 
 	count = 0;
 	if (*format == '.')
-	{
 		format++;
-		mods->skip += 1;
-	}
 	while (format[count] && format[count] >= '0' && format[count] <= '9')
 		count++;
 	*num = ft_atoi(format);
-	mods->skip += count;
 	return (&format[count]);
 }
 
@@ -60,7 +55,6 @@ modifiers	*ft_get_mods(const char *format)
 	mods = ft_calloc(1, sizeof(modifiers));
 	if (mods == NULL)
 		return (NULL);
-	mods->skip = 1;
 	fp = ft_get_flags(mods, fp);
 	mods->width = -1;
 	mods->precision = -1;

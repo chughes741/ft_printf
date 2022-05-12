@@ -30,15 +30,7 @@ typedef struct mod_list
 	int				width;
 	int				precision;
 	char			specifier;
-	int				skip;
 }					modifiers;
-
-typedef union argument
-{
-	char			c_arg;
-	int				i_arg;
-	unsigned int	u_arg;
-} arg_union;
 
 int			ft_printf(const char *form, ...); // Returns # of c printed
 modifiers	*ft_get_mods(const char *format);
