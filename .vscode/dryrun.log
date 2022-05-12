@@ -4,8 +4,7 @@ gcc -Wall -Werror -Wextra -o ft_get_mods.o -c ft_get_mods.c
 gcc -Wall -Werror -Wextra -o ft_itox.o -c ft_get_mods.c
 gcc -Wall -Werror -Wextra -o ft_print_arg.o -c ft_get_mods.c
 gcc -Wall -Werror -Wextra -o ft_printf.o -c ft_get_mods.c
- 
 gcc -Wall -Werror -Wextra -o test_printf.o -c ft_get_mods.c
-ar -crs libftprintf.a ft_get_mods.o ft_itox.o ft_print_arg.o ft_printf.o test_printf.o libft/libft.a
+ar -crs ftprintf.a ft_get_mods.o ft_itox.o ft_print_arg.o ft_printf.o test_printf.o libft/libft.a
 make: Leaving directory `/Users/cole/42/ft_printf'
  
