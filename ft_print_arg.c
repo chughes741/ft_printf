@@ -68,6 +68,8 @@ static char	*ft_format(modifiers *mod, char *str)
 void	ft_print_arg(modifiers *mod, void *arg, int *count)
 {
 	char	*output;
+
+	output = NULL;
 	if(mod->specifier == 'c' || mod->specifier == 's')
 		output = ft_strdup((char *)arg);
 	if(mod->specifier == 'd' || mod->specifier == 'i' || \
