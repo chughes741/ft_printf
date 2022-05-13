@@ -23,11 +23,6 @@
 		' '	blank space instead of sign
 		'#'	adds hex prefixes, like 0x
 
-	VA functions:
-		va_start()	- opens the list
-		va_arg()	- access next item in the list
-		va_end()	- close the list
-
 	%[flags][width][.precision][length]specifier
 */
 
@@ -48,6 +43,7 @@ int	ft_printf(const char *form, ...)
 			mods = ft_get_mods(format);
 			ft_print_arg(mods, va_arg(args, void *), &count);
 			free(mods);
+			format++;
 			while (format && !ft_strchr("%cspdiuxX", *format))
 				format++;
 		}
