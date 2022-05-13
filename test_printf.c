@@ -21,19 +21,19 @@
 #define TITLE(title) print_title(title)
 #define TEST_NAME(test_name) print_test(test_name)
 
-void print_title(char* title) {
+static void print_title(char* title) {
 	printf("%s\n", cyan);
 	printf("\t-*-*- %s -*-*-", title);
 	printf("%s\n\n", default);
 }
 
-void print_test(char* test_name) {
+static void print_test(char* test_name) {
 	printf("%s", blue);
 	printf("%s", test_name);
 	printf("%s\n", default);
 }
 
-void count_test(int x, int y) {
+static void count_test(int x, int y) {
 	x == (y - 2) ? printf("%sCount matches%s\n\n", green, default) : \
 			 printf("%sLC: %i\tFT: %i %s\n\n", red, (y - 6), (x - 4), default); 
 }
