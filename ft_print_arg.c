@@ -46,6 +46,15 @@ static void	ft_left_justify(char *str)
 	return ;
 }
 
+static void	ft_strupper(char *str)
+{
+	while (str++)
+	{
+		if (ft_isalpha(*str))
+			ft_toupper(*str);
+	}
+}
+
 static char	*ft_format(modifiers *mod, char *str)
 { // TODO fix leaks when strjoin is called
 	if (mod->precision >= 0)
@@ -54,6 +63,8 @@ static char	*ft_format(modifiers *mod, char *str)
 		str = ft_set_width(str, mod->width);
 	if (mod->hash || mod->specifier == 'p')
 		str = ft_strjoin("0x", str);
+	if (mod->specifier == 'X')
+		ft_strupper(str);
 	if (mod->plus)
 		str = ft_strjoin("+", str);
 	if (mod->dash)
@@ -70,12 +81,14 @@ void	ft_print_arg(modifiers *mod, void *arg, int *count)
 	char	*output;
 
 	output = NULL;
-	if(mod->specifier == 'c' || mod->specifier == 's')
+	if (mod->specifier == 'c')
+		(write(1, &arg, 1));
+	if (mod->specifier == 's')
 		output = ft_strdup((char *)arg);
-	if(mod->specifier == 'd' || mod->specifier == 'i' || \
+	if (mod->specifier == 'd' || mod->specifier == 'i' || \
 	mod->specifier == 'u')
 		output = ft_itoa(*((int *)arg)); // TODO modify itoa for unsigned
-	if(mod->specifier == 'x' || mod->specifier == 'X' || \
+	if (mod->specifier == 'x' || mod->specifier == 'X' || \
 	mod->specifier == 'p')
 		output = ft_itox(*((int *)arg)); // TODO fix 0's in itox
 	if (output == NULL)
