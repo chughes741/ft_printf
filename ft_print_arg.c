@@ -25,20 +25,29 @@ static void ft_space_to_zero(char *str)
 	return ;
 }
 
-static char	*ft_set_width(char *str, int width) // TODO join memleak
+static char	*ft_set_width(char *str, int width)
 {
+	char	*temp;
+
 	if (ft_strlen(str) >= (unsigned long)width)
 		return (str);
 	width -= ft_strlen(str);
 	while((width--) > 0)
-		str = ft_strjoin(" ", str);
+	{
+		temp = ft_strjoin(" ", str);
+		free(str);
+		str = temp;
+	}
 	return (str);
 }
 
-static void ft_set_precision(char *str, int precision) // TODO positional value
+static void ft_set_precision(char *str, int precision) // TODO check if needed
 {
-	while (str[precision++])
+	while (str[precision])
+	{
 		str[precision] = '0';
+		precision++;
+	}
 }
 
 static void	ft_left_justify(char *str)
@@ -75,8 +84,8 @@ static void	ft_strupper(char *str)
 	}
 }
 
-static char	*ft_format(modifiers *mod, char *str)
-{ // TODO fix leaks when strjoin is called
+static char	*ft_format(modifiers *mod, char *str) // TODO strjoin memleak
+{
 	if (mod->precision >= 0)
 		ft_set_precision(str, mod->precision);
 	if (mod->width >= 0)
@@ -96,23 +105,23 @@ static char	*ft_format(modifiers *mod, char *str)
 	return (str);
 }
 
-void	ft_print_arg(modifiers *mod, va_list args, int *count)
+void	ft_print_arg(modifiers *mod, va_list args, int *count) // TODO
 {
 	char	*output;
 
 	output = NULL;
 	if (mod->specifier == 'c')
-		(write(1, va_arg(args, char *), 1)); // TODO fix single char print
+		ft_putchar_fd(va_arg(args, int), 1); // TODO count mismatch
 	if (mod->specifier == 's')
 		output = ft_strdup(va_arg(args, char*));
 	if (mod->specifier == 'd' || mod->specifier == 'i')
 		output = ft_itoa(va_arg(args, int));
-	// if (mod->specifier == 'u')
-		// output = ft_utoa(va_arg(args, unsigned int)); // TODO write utoa
+	if (mod->specifier == 'u')
+		output = ft_utoa(va_arg(args, unsigned int));
 	if (mod->specifier == 'x' || mod->specifier == 'X')
 		output = ft_itox(va_arg(args, unsigned int));
-	if (mod->specifier == 'p')
-		output = ft_itox((unsigned long)(va_arg(args, void *))); // TODO fix
+	if (mod->specifier == 'p') // TODO fix pointer print
+		output = ft_itox((unsigned long)(va_arg(args, void *)));
 	if (output == NULL)
 		return ;
 	output = ft_format(mod, output);
