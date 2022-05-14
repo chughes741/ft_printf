@@ -114,8 +114,8 @@ int main() {
 	count_test(x, y);
 
 	TEST_NAME("Dot precision");
-	x = ft_printf("FT: %0.10i", 123);
-	y = printf("\nLC: %0.10i\n", 123);
+	x = ft_printf("FT: %10.5i", 123456789);
+	y = printf("\nLC: %10.5i\n", 123456789);
 	count_test(x, y);
 
 	TEST_NAME("Hex prefix");
