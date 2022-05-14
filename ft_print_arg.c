@@ -14,8 +14,14 @@
 
 static void ft_space_to_zero(char *str)
 {
-	while (str++ && *str == ' ')
-		*str = '0';
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] == ' ')
+	{
+		str[i] = '0';
+		i++;
+	}
 	return ;
 }
 
@@ -37,21 +43,35 @@ static void ft_set_precision(char *str, int precision) // TODO positional value
 
 static void	ft_left_justify(char *str)
 {
-	char	*temp;
+	int	i;
+	int j;
 
-	temp = ft_strtrim(str, " ");
-	ft_memset(str, ' ', ft_strlen(str) * sizeof(char));
-	ft_strlcpy(str, temp, ft_strlen(temp));
-	free(temp);
+	if (str[0] != ' ')
+		return ;
+	i = 0;
+	j = 0;
+	while (str[j] == ' ')
+		j++;
+	while (str[j])
+	{
+		str[i] = str[j];
+		str[j] = ' ';
+		i++;
+		j++;
+	}
 	return ;
 }
 
 static void	ft_strupper(char *str)
 {
-	while (str++)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		if (ft_isalpha(*str))
-			ft_toupper(*str);
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] ^= 1 << 5;
+		i++;
 	}
 }
 
@@ -76,21 +96,23 @@ static char	*ft_format(modifiers *mod, char *str)
 	return (str);
 }
 
-void	ft_print_arg(modifiers *mod, void *arg, int *count)
+void	ft_print_arg(modifiers *mod, va_list args, int *count)
 {
 	char	*output;
 
 	output = NULL;
 	if (mod->specifier == 'c')
-		(write(1, &arg, 1));
+		(write(1, va_arg(args, char *), 1)); // TODO fix single char print
 	if (mod->specifier == 's')
-		output = ft_strdup((char *)arg);
-	if (mod->specifier == 'd' || mod->specifier == 'i' || \
-	mod->specifier == 'u')
-		output = ft_itoa(*((int *)arg)); // TODO modify itoa for unsigned
-	if (mod->specifier == 'x' || mod->specifier == 'X' || \
-	mod->specifier == 'p')
-		output = ft_itox(*((int *)arg)); // TODO fix 0's in itox
+		output = ft_strdup(va_arg(args, char*));
+	if (mod->specifier == 'd' || mod->specifier == 'i')
+		output = ft_itoa(va_arg(args, int));
+	// if (mod->specifier == 'u')
+		// output = ft_utoa(va_arg(args, unsigned int)); // TODO write utoa
+	if (mod->specifier == 'x' || mod->specifier == 'X')
+		output = ft_itox(va_arg(args, unsigned int));
+	if (mod->specifier == 'p')
+		output = ft_itox((unsigned long)(va_arg(args, void *))); // TODO fix
 	if (output == NULL)
 		return ;
 	output = ft_format(mod, output);
