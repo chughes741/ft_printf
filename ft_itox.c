@@ -16,13 +16,18 @@ char	*ft_itox(int nbr)
 {
 	int		i;
 	char	hexBase[] = "0123456789abcdef";
+	char	*temp;
 	char	*rtn;
 
-	rtn = ft_calloc(9, sizeof(char));
-	if (rtn == NULL)
+	temp = ft_calloc(9, sizeof(char));
+	if (temp == NULL)
 		return (NULL);
 	i = -1;
 	while (++i < 8)
-		rtn[i] = hexBase[((nbr >> (28 - (i * 4))) & 0xF)];
+		temp[i] = hexBase[((nbr >> (28 - (i * 4))) & 0xF)];
+	i = 0;
+	while (temp[i++] == '0')
+	rtn = ft_substr(temp, i, (ft_strlen(temp) - i));
+	free(temp);
 	return (rtn);
 }
