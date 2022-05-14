@@ -104,7 +104,7 @@ int main() {
 	count_test(x, y);
 
 	TEST_NAME("Int zero padding");
-	x = ft_printf("FT: %10i", 12345);
+	x = ft_printf("FT: %010i", 12345);
 	y = printf("\nLC: %010i\n", 12345);
 	count_test(x, y);
 
