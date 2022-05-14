@@ -24,11 +24,12 @@ int	ft_printf(const char *form, ...)
 	va_start(args, form);
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format == '%') // TODO skip %...
 		{
 			mods = ft_get_mods(format);
 			ft_print_arg(mods, args, &count);
 			free(mods);
+			format++;
 		}
 		ft_putchar_fd(*format, 1);
 		format++;
