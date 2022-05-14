@@ -12,20 +12,6 @@
 
 #include "ft_printf.h"
 
-/* 
-	Needs to handle c, s, p, d, i, u, x, X, and % 
-	No buffer management
-	Bonuses: 
-		'-'	left justify
-		'0'	field is padded with 0's instead of spaces
-		'.'	precision, x.y, x is total number, y is total to the right
-		'+'	sign of number is always displayed
-		' '	blank space instead of sign
-		'#'	adds hex prefixes, like 0x
-
-	%[flags][width][.precision][length]specifier
-*/
-
 int	ft_printf(const char *form, ...)
 {
 	va_list		args;
@@ -41,11 +27,8 @@ int	ft_printf(const char *form, ...)
 		if (*format == '%')
 		{
 			mods = ft_get_mods(format);
-			ft_print_arg(mods, va_arg(args, void *), &count);
+			ft_print_arg(mods, args, &count);
 			free(mods);
-			format++;
-			while (format && !ft_strchr("%cspdiuxX", *format))
-				format++;
 		}
 		ft_putchar_fd(*format, 1);
 		format++;
