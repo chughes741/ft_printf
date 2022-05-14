@@ -46,22 +46,24 @@ static char	*ft_get_num(char *format, int *num)
 	return (&format[count]);
 }
 
-modifiers	*ft_get_mods(const char *format)
+modifiers	*ft_get_mods(char *format)
 {
 	modifiers	*mods;
-	char		*fp;
 
-	fp = (char *)(format + 1);
+	format++;
 	mods = ft_calloc(1, sizeof(modifiers));
 	if (mods == NULL)
 		return (NULL);
-	fp = ft_get_flags(mods, fp);
+	format = ft_get_flags(mods, format);
 	mods->width = -1;
 	mods->precision = -1;
-	if (ft_isdigit((int)*fp))
-		fp = ft_get_num(fp, &mods->width);
-	if (*fp == '.')
-		fp = ft_get_num(fp, &mods->precision);
-	mods->specifier = (char)*fp;
+	if (ft_isdigit((int)*format))
+		format = ft_get_num(format, &mods->width);
+	if (*format == '.')
+		format = ft_get_num(format, &mods->precision);
+	if (mods->precision > mods->width)
+		mods->width = mods->precision;
+	mods->specifier = (char)*format;
+	format++;
 	return (mods);
 }
