@@ -32,8 +32,8 @@ typedef struct mod_list
 }					modifiers;
 
 int			ft_printf(const char *form, ...); // Returns # of c printed
-modifiers	*ft_get_mods(const char *format);
-void		ft_print_arg(modifiers *mods, void *arg, int *count); // Returns # of c printed
+modifiers	*ft_get_mods(char *format);
+void		ft_print_arg(modifiers *mods, va_list args, int *count); // Returns # of c printed
 char		*ft_itox(int nbr);
 
 #endif
