@@ -15,7 +15,7 @@
 char	*ft_ltox(unsigned long nbr)
 {
 	int		i;
-	char	hexBase[] = "0123456789abcdef";
+	char	hex_base[] = "0123456789abcdef";
 	char	*temp;
 	char	*rtn;
 
@@ -24,7 +24,7 @@ char	*ft_ltox(unsigned long nbr)
 		return (NULL);
 	i = -1;
 	while (++i < 8)
-		temp[i] = hexBase[((nbr >> (60 - (i * 4))) & 0xF)];
+		temp[i] = hex_base[((nbr >> (60 - (i * 4))) & 0xF)];
 	i = 0;
 	while (temp[i++] == '0')
 	rtn = ft_substr(temp, i, (ft_strlen(temp) - i));

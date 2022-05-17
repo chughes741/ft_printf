@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void ft_space_to_zero(char *str)
+static void	ft_space_to_zero(char *str)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ static char	*ft_set_width(char *str, int width)
 	if (ft_strlen(str) >= (unsigned long)width)
 		return (str);
 	width -= ft_strlen(str);
-	while((width--) > 0)
+	while ((width--) > 0)
 	{
 		temp = ft_strjoin(" ", str);
 		free(str);
@@ -41,7 +41,7 @@ static char	*ft_set_width(char *str, int width)
 	return (str);
 }
 
-static void ft_set_precision(char *str, int precision) // TODO check if needed
+static void	ft_set_precision(char *str, int precision) // TODO check if needed
 {
 	while (str[precision])
 	{
@@ -53,7 +53,7 @@ static void ft_set_precision(char *str, int precision) // TODO check if needed
 static void	ft_left_justify(char *str)
 {
 	int	i;
-	int j;
+	int	j;
 
 	if (str[0] != ' ')
 		return ;
@@ -84,7 +84,7 @@ static void	ft_strupper(char *str)
 	}
 }
 
-static char	*ft_format(modifiers *mod, char *str) // TODO strjoin memleak
+static char	*ft_format(t_mod *mod, char *str) // TODO strjoin memleak
 {
 	if (mod->precision >= 0)
 		ft_set_precision(str, mod->precision);
@@ -105,7 +105,7 @@ static char	*ft_format(modifiers *mod, char *str) // TODO strjoin memleak
 	return (str);
 }
 
-void	ft_print_arg(modifiers *mod, va_list args, int *count) // TODO
+void	ft_print_arg(t_mod *mod, va_list args, int *count) // TODO
 {
 	char	*output;
 
@@ -113,7 +113,7 @@ void	ft_print_arg(modifiers *mod, va_list args, int *count) // TODO
 	if (mod->specifier == 'c')
 		ft_putchar_fd(va_arg(args, int), 1); // TODO count mismatch
 	if (mod->specifier == 's')
-		output = ft_strdup(va_arg(args, char*));
+		output = ft_strdup(va_arg(args, char *));
 	if (mod->specifier == 'd' || mod->specifier == 'i')
 		output = ft_itoa(va_arg(args, int));
 	if (mod->specifier == 'u')

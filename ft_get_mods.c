@@ -14,7 +14,7 @@
 
 // %[flags][width][.precision]specifier
 
-static char	*ft_get_flags(modifiers *mods, char *format)
+static char	*ft_get_flags(t_mod *mods, char *format)
 {
 	while (ft_strchr("-+ #0", *format))
 	{
@@ -35,7 +35,7 @@ static char	*ft_get_flags(modifiers *mods, char *format)
 
 static char	*ft_get_num(char *format, int *num)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (*format == '.')
@@ -46,12 +46,12 @@ static char	*ft_get_num(char *format, int *num)
 	return (&format[count]);
 }
 
-modifiers	*ft_get_mods(char *format)
+t_mod	*ft_get_mods(char *format)
 {
-	modifiers	*mods;
+	t_mod	*mods;
 
 	format++;
-	mods = ft_calloc(1, sizeof(modifiers));
+	mods = ft_calloc(1, sizeof(t_mod));
 	if (mods == NULL)
 		return (NULL);
 	format = ft_get_flags(mods, format);

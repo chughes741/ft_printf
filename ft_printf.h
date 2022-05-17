@@ -19,7 +19,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-typedef struct mod_list
+typedef struct t_mod_list
 {
 	unsigned int	dash : 1;
 	unsigned int	plus : 1;
@@ -29,13 +29,13 @@ typedef struct mod_list
 	int				width;
 	int				precision;
 	char			specifier;
-}					modifiers;
+}					t_mod;
 
-int			ft_printf(const char *form, ...); // Returns # of c printed
-modifiers	*ft_get_mods(char *format);
-void		ft_print_arg(modifiers *mods, va_list args, int *count); // Returns # of c printed
+int			ft_printf(const char *form, ...);
+t_mod		*ft_get_mods(char *format);
+void		ft_print_arg(t_mod *mods, va_list args, int *count);
 char		*ft_itox(int nbr);
-char		*ft_utoa(unsigned nbr);
+char		*ft_utoa(unsigned int nbr);
 char		*ft_ltox(unsigned long nbr);
 
 #endif

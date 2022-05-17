@@ -15,7 +15,7 @@
 int	ft_printf(const char *form, ...)
 {
 	va_list		args;
-	modifiers	*mods;
+	t_mod		*mods;
 	int			count;
 	char		*format;
 
@@ -24,14 +24,16 @@ int	ft_printf(const char *form, ...)
 	va_start(args, form);
 	while (*format)
 	{
-		if (*format == '%') // TODO skip %...
+		if (*format == '%')
 		{
 			mods = ft_get_mods(format);
 			ft_print_arg(mods, args, &count);
 			free(mods);
 			format++;
+			while (ft_strchr(" .-+#1234567890", *format))
+				format++;
 		}
-		ft_putchar_fd(*format, 1);
+		write(1, format, 1);
 		format++;
 		count++;
 	}
