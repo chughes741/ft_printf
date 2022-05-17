@@ -37,5 +37,6 @@ void		ft_print_arg(t_mod *mods, va_list args, int *count);
 char		*ft_itox(int nbr);
 char		*ft_utoa(unsigned int nbr);
 char		*ft_ptoa(uintptr_t nbr);
+char		*ft_str_append(char *s1, char *s2);
 
 #endif
