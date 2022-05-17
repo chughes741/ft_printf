@@ -18,6 +18,8 @@ char	*ft_str_append(char *s1, char *s2)
 	int		i;
 	int		j;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	i = 0;
 	j = 0;
 	rtn = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
