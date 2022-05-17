@@ -34,8 +34,8 @@ static void print_test(char* test_name) {
 }
 
 static void count_test(int x, int y) {
-	x == (y - 2) ? printf("%sCount matches%s\n\n", green, default) : \
-			 printf("%sLC: %i\tFT: %i %s\n\n", red, (y - 6), (x - 4), default); 
+	x == (y - 2) ? printf("%sCount matches%s\n", green, default) : \
+			 printf("%sLC: %i\tFT: %i %s\n", red, (y - 6), (x - 4), default); 
 }
 
 int main() {
