@@ -99,13 +99,13 @@ void	ft_print_arg(t_mod *mod, va_list args, int *count)
 {
 	char	*output;
 
-	output = NULL;
+	output = ft_calloc(1, sizeof(char));
 	if (mod->specifier == '%')
-		*count += ft_putchar('%');
+		output = ft_str_append("%", output);
 	if (mod->specifier == 'c')
 		*count += ft_putchar(va_arg(args, int));
 	if (mod->specifier == 's')
-		output = ft_strdup(va_arg(args, char *));
+		output = ft_str_append(va_arg(args, char *), output);
 	if (mod->specifier == 'd' || mod->specifier == 'i')
 		output = ft_itoa(va_arg(args, int));
 	if (mod->specifier == 'u')
@@ -115,7 +115,7 @@ void	ft_print_arg(t_mod *mod, va_list args, int *count)
 	if (mod->specifier == 'p')
 		output = ft_ptoa((va_arg(args, uintptr_t)));
 	if (output == NULL)
-		return ;
+		output = ft_strdup("(null)");
 	output = ft_format(mod, output);
 	ft_putstr_fd(output, 1);
 	*count += ft_strlen(output);
