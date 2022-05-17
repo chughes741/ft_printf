@@ -27,17 +27,11 @@ static void	ft_space_to_zero(char *str)
 
 static char	*ft_set_width(char *str, int width)
 {
-	char	*temp;
-
 	if (ft_strlen(str) >= (unsigned long)width)
 		return (str);
 	width -= ft_strlen(str);
 	while ((width--) > 0)
-	{
-		temp = ft_strjoin(" ", str);
-		free(str);
-		str = temp;
-	}
+		str = ft_str_append(" ", str);
 	return (str);
 }
 
@@ -80,22 +74,22 @@ static int	ft_putchar(int c)
 	return (write(1, &c, 1));
 }
 
-static char	*ft_format(t_mod *mod, char *str) // TODO strjoin memleak
+static char	*ft_format(t_mod *mod, char *str)
 {
 	if (mod->width >= 0 && mod->width >= mod->precision)
 		str = ft_set_width(str, mod->width);
 	else if (mod->precision >= 0 && mod->precision > mod->width)
 		str = ft_set_width(str, mod->precision);
 	if (mod->hash || mod->specifier == 'p')
-		str = ft_strjoin("0x", str);
+		str = ft_str_append("0x", str);
 	if (mod->specifier == 'X')
 		ft_strupper(str);
 	if (mod->plus)
-		str = ft_strjoin("+", str);
+		str = ft_str_append("+", str);
 	if (mod->dash)
 		ft_left_justify(str);
 	if (mod->space && str[0] != ' ')
-		str = ft_strjoin(" ", str);
+		str = ft_str_append(" ", str);
 	if (mod->zero)
 		ft_space_to_zero(str);
 	return (str);

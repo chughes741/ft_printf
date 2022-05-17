@@ -1,34 +1,39 @@
-NAME	=	ftprintf.a
+NAME	=	libftprintf.a
+LIBFT	=	libft.a
+LDIR	=	libft/
 
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
-AFLAGS	=	-crs
+AFLAGS	=	-rs
 RM 		=	rm -rf
 
-SRCS	=	$(wildcard *.c)
+SRCS	=	ft_utoa.c ft_ptoa.c ft_printf.c ft_print_arg.c ft_itox.c \
+			ft_get_mods.c ft_str_append.c
 OBJS	=	$(SRCS:.c=.o)
 
-LDIR	=	libft
 
 # Targets
-all: $(NAME)
+all: $(LDIR)/$(LIBFT) $(NAME)
 
-$(NAME): $(OBJS) $(LDIR)/libft.a
-	@ar $(AFLAGS) $@ $^
+$(NAME): $(OBJS) $(LDIR)/$(LIBFT)
+	@cp $(LDIR)$(LIBFT) $@
+	@ar $(AFLAGS) $@ $(OBJS)
 
-$(OBJS): $(SRCS)
-	@$(CC) $(CFLAGS) -o $@ -c $<
+.c.o:
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
 
-$(LDIR)/libft.a:
-	@cd $(LDIR) && make
+$(LDIR)/$(LIBFT):
+	@$(MAKE) -C $(LDIR)
 
 # Removes objects
 clean:
 	@$(RM) $(OBJS)
+	@$(RM) $(LDIR)*.o
 
 # Removes objects and executables
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(LDIR)$(LIBFT)
 
 # Removes objects and executables and remakes
 re: fclean all
@@ -40,8 +45,8 @@ dclean: fclean
 	@$(RM) *.dSYM
 
 # Test function used with main
-test:
+test: $(LDIR)/$(LIBFT)
 	@clear
-	@$(CC) $(CFLAGS) -o test $(SRCS) $(LDIR)/libft.a
+	@$(CC) $(CFLAGS) -o test $(SRCS) test_printf.c $(LDIR)$(LIBFT)
 	@./test
 	@$(RM) test
