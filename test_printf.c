@@ -61,8 +61,8 @@ int main() {
 	count_test(x, y);
 
 	TEST_NAME("NULL string");
-	x = ft_printf(" NULL %s NULL ", NULL);
-	y = printf(" NULL %s NULL ", NULL);
+	x = ft_printf("FT: NULL %s NULL", NULL);
+	y = printf("\nLC: NULL %s NULL\n", NULL);
 	count_test(x, y);
 
 	TEST_NAME("Pointer address");
