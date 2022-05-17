@@ -100,8 +100,10 @@ void	ft_print_arg(t_mod *mod, va_list args, int *count)
 	char	*output;
 
 	output = NULL;
+	if (mod->specifier == '%')
+		*count += ft_putchar('%');
 	if (mod->specifier == 'c')
-		count += ft_putchar(va_arg(args, int));
+		*count += ft_putchar(va_arg(args, int));
 	if (mod->specifier == 's')
 		output = ft_strdup(va_arg(args, char *));
 	if (mod->specifier == 'd' || mod->specifier == 'i')

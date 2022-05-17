@@ -32,12 +32,14 @@ int	ft_printf(const char *form, ...)
 			format++;
 			while (ft_strchr(" .-+#1234567890", *format))
 				format++;
-			if (ft_strchr("csiduXxp", *format))
+			if (ft_strchr("%cspdiuxX", *format))
 				format++;
 		}
-		write(1, format, 1);
-		format++;
-		count++;
+		else
+		{
+			count += write(1, format, 1);
+			format++;
+		}
 	}
 	va_end(args);
 	return (count);
