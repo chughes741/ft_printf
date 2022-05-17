@@ -60,6 +60,11 @@ int main() {
 	y = printf("\nLC: %s\n", "test");
 	count_test(x, y);
 
+	TEST_NAME("NULL string");
+	x = ft_printf(" NULL %s NULL ", NULL);
+	y = printf(" NULL %s NULL ", NULL);
+	count_test(x, y);
+
 	TEST_NAME("Pointer address");
 	x = ft_printf("FT: %p", &y);
 	y = printf("\nLC: %p\n", &y);
