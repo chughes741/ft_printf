@@ -75,6 +75,11 @@ static void	ft_strupper(char *str)
 	}
 }
 
+static int	ft_putchar(int c)
+{
+	return (write(1, &c, 1));
+}
+
 static char	*ft_format(t_mod *mod, char *str) // TODO strjoin memleak
 {
 	if (mod->width >= 0 && mod->width >= mod->precision)
@@ -96,13 +101,13 @@ static char	*ft_format(t_mod *mod, char *str) // TODO strjoin memleak
 	return (str);
 }
 
-void	ft_print_arg(t_mod *mod, va_list args, int *count) // TODO
+void	ft_print_arg(t_mod *mod, va_list args, int *count)
 {
 	char	*output;
 
 	output = NULL;
 	if (mod->specifier == 'c')
-		ft_putchar_fd(va_arg(args, int), 1); // TODO count mismatch
+		count += ft_putchar(va_arg(args, int));
 	if (mod->specifier == 's')
 		output = ft_strdup(va_arg(args, char *));
 	if (mod->specifier == 'd' || mod->specifier == 'i')
@@ -111,8 +116,8 @@ void	ft_print_arg(t_mod *mod, va_list args, int *count) // TODO
 		output = ft_utoa(va_arg(args, unsigned int));
 	if (mod->specifier == 'x' || mod->specifier == 'X')
 		output = ft_itox(va_arg(args, unsigned int));
-	if (mod->specifier == 'p') // TODO fix pointer print
-		output = ft_ltox((va_arg(args, unsigned long)));
+	if (mod->specifier == 'p')
+		output = ft_ptoa((va_arg(args, uintptr_t)));
 	if (output == NULL)
 		return ;
 	output = ft_format(mod, output);
