@@ -121,7 +121,7 @@ void	ft_print_arg(modifiers *mod, va_list args, int *count) // TODO
 	if (mod->specifier == 'x' || mod->specifier == 'X')
 		output = ft_itox(va_arg(args, unsigned int));
 	if (mod->specifier == 'p') // TODO fix pointer print
-		output = ft_itox((unsigned long)(va_arg(args, void *)));
+		output = ft_ltox((va_arg(args, unsigned long)));
 	if (output == NULL)
 		return ;
 	output = ft_format(mod, output);
