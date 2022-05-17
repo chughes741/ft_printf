@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*ft_ltox(unsigned long nbr)
+char	*ft_ptoa(uintptr_t nbr)
 {
 	int		i;
 	char	hex_base[] = "0123456789abcdef";
@@ -23,7 +23,7 @@ char	*ft_ltox(unsigned long nbr)
 	if (temp == NULL)
 		return (NULL);
 	i = -1;
-	while (++i < 8)
+	while (++i < 16)
 		temp[i] = hex_base[((nbr >> (60 - (i * 4))) & 0xF)];
 	i = 0;
 	while (temp[i++] == '0')

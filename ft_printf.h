@@ -36,6 +36,6 @@ t_mod		*ft_get_mods(char *format);
 void		ft_print_arg(t_mod *mods, va_list args, int *count);
 char		*ft_itox(int nbr);
 char		*ft_utoa(unsigned int nbr);
-char		*ft_ltox(unsigned long nbr);
+char		*ft_ptoa(uintptr_t nbr);
 
 #endif
