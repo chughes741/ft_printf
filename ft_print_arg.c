@@ -41,15 +41,6 @@ static char	*ft_set_width(char *str, int width)
 	return (str);
 }
 
-static void	ft_set_precision(char *str, int precision) // TODO check if needed
-{
-	while (str[precision])
-	{
-		str[precision] = '0';
-		precision++;
-	}
-}
-
 static void	ft_left_justify(char *str)
 {
 	int	i;
@@ -86,10 +77,10 @@ static void	ft_strupper(char *str)
 
 static char	*ft_format(t_mod *mod, char *str) // TODO strjoin memleak
 {
-	if (mod->precision >= 0)
-		ft_set_precision(str, mod->precision);
-	if (mod->width >= 0)
+	if (mod->width >= 0 && mod->width >= mod->precision)
 		str = ft_set_width(str, mod->width);
+	else if (mod->precision >= 0 && mod->precision > mod->width)
+		str = ft_set_width(str, mod->precision);
 	if (mod->hash || mod->specifier == 'p')
 		str = ft_strjoin("0x", str);
 	if (mod->specifier == 'X')
