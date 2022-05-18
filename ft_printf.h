@@ -14,10 +14,7 @@
 # define FT_PRINTF_H
 
 # include "libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 typedef struct t_mod_list
 {
