@@ -26,7 +26,8 @@ char	*ft_itox(int nbr)
 	while (++i < 8)
 		temp[i] = hex_base[((nbr >> (28 - (i * 4))) & 0xF)];
 	i = 0;
-	while (temp[i++] == '0')
+	while (temp[i] == '0')
+		i++;
 	rtn = ft_substr(temp, i, (ft_strlen(temp) - i));
 	free(temp);
 	return (rtn);
