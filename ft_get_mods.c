@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-// %[flags][width][.precision]specifier
-
 static char	*ft_get_flags(t_mod *mods, char *format)
 {
 	while (ft_strchr("-+ #0", *format))
