@@ -71,19 +71,21 @@ static void	ft_strupper(char *str)
 
 char	*ft_format(t_mod *mod, char *str)
 {
+	if (mod->hash && (ft_strlen(str) != 1 || str[0] != '0'))
+		str = ft_str_append("0x", str);
+	if (mod->specifier == 'p')
+		str = ft_str_append("0x", str);
 	if (mod->width >= 0 && mod->width >= mod->precision)
 		str = ft_set_width(str, mod->width);
 	else if (mod->precision >= 0 && mod->precision > mod->width)
 		str = ft_set_width(str, mod->precision);
-	if (mod->hash || mod->specifier == 'p')
-		str = ft_str_append("0x", str);
 	if (mod->specifier == 'X')
 		ft_strupper(str);
-	if (mod->plus)
+	if (mod->plus && str[0] != '-')
 		str = ft_str_append("+", str);
 	if (mod->dash)
 		ft_left_justify(str);
-	if (mod->space && str[0] != ' ')
+	if (mod->space && str[0] != ' ' && str[0] != '-')
 		str = ft_str_append(" ", str);
 	if (mod->zero)
 		ft_space_to_zero(str);
