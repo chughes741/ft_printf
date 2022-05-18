@@ -25,6 +25,8 @@ $(NAME): $(OBJS) $(LDIR)/$(LIBFT)
 $(LDIR)/$(LIBFT):
 	@$(MAKE) -C $(LDIR)
 
+bonus: all
+
 # Removes objects
 clean:
 	@$(RM) $(OBJS)
