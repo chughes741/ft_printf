@@ -38,5 +38,6 @@ char		*ft_itox(int nbr);
 char		*ft_utoa(unsigned int nbr);
 char		*ft_ptoa(uintptr_t nbr);
 char		*ft_str_append(char *s1, char *s2);
+char		*ft_format(t_mod *mod, char *str);
 
 #endif

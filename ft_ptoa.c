@@ -15,10 +15,11 @@
 char	*ft_ptoa(uintptr_t nbr)
 {
 	int		i;
-	char	hex_base[] = "0123456789abcdef";
+	char	*hex_base;
 	char	*temp;
 	char	*rtn;
 
+	hex_base = "0123456789abcdef";
 	temp = ft_calloc(17, sizeof(char));
 	if (temp == NULL)
 		return (NULL);
