@@ -26,7 +26,7 @@ char	*ft_ptoa(uintptr_t nbr)
 	while (++i < 16)
 		temp[i] = hex_base[((nbr >> (60 - (i * 4))) & 0xF)];
 	i = 0;
-	while (temp[i] == '0')
+	while (temp[i] == '0' && i < 15)
 		i++;
 	rtn = ft_substr(temp, i, (ft_strlen(temp) - i));
 	free(temp);
