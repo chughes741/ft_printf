@@ -28,7 +28,8 @@ char	*ft_utoa(unsigned int nbr)
 		nbr /= 10;
 	}
 	i = 0;
-	while (temp[i++] == '0')
+	while (temp[i] == '0')
+		i++;
 	rtn = ft_substr(temp, i, (ft_strlen(temp) - i));
 	free(temp);
 	return (rtn);
