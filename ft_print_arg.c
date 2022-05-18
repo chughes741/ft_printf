@@ -107,13 +107,25 @@ void	ft_print_arg(t_mod *mod, va_list args, int *count)
 	if (mod->specifier == 's')
 		output = ft_str_append(va_arg(args, char *), output);
 	if (mod->specifier == 'd' || mod->specifier == 'i')
+	{
+		free(output);
 		output = ft_itoa(va_arg(args, int));
+	}
 	if (mod->specifier == 'u')
+	{
+		free(output);
 		output = ft_utoa(va_arg(args, unsigned int));
+	}
 	if (mod->specifier == 'x' || mod->specifier == 'X')
+	{
+		free(output);
 		output = ft_itox(va_arg(args, unsigned int));
+	}
 	if (mod->specifier == 'p')
+	{
+		free(output);
 		output = ft_ptoa((va_arg(args, uintptr_t)));
+	}
 	if (output == NULL)
 		output = ft_strdup("(null)");
 	output = ft_format(mod, output);
