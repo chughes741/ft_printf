@@ -8,7 +8,7 @@ AFLAGS	=	-rs
 RM 		=	rm -rf
 
 SRCS	=	ft_utoa.c ft_ptoa.c ft_printf.c ft_print_arg.c ft_itox.c \
-			ft_get_mods.c ft_str_append.c
+			ft_get_mods.c ft_str_append.c ft_format.c
 OBJS	=	$(SRCS:.c=.o)
 
 
