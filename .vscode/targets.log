@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Thu May 12 19:17:47 2022
+# Make data base, printed on Sun May 22 09:40:13 2022
 
 # Variables
 
@@ -20,7 +20,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
- 
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
@@ -29,13 +28,13 @@ VSCODE_LOG_NATIVE = false
 CURDIR := /Users/cole/42/ft_printf
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 6)
+# makefile (from `Makefile', line 8)
 RM = rm -rf
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile (from `Makefile', line 4)
+# makefile (from `Makefile', line 6)
 CFLAGS = -Wall -Werror -Wextra
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
@@ -44,8 +43,9 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/b4/nnmxnn_s10xf5bndzfpgcm440000gn/T/vscode-ipc-b4e7f03f-dfa3-44e5-91a9-717ad7653cd6.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/b4/nnmxnn_s10xf5bndzfpgcm440000gn/T/vscode-ipc-dd6f7cae-1d04-45d6-b968-ab43d2200d2d.sock
 # environment
+ 
 VSCODE_CWD = /
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -56,12 +56,12 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.O4TqWQP0UA/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.9WdqMecPU7/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
-# makefile (from `Makefile', line 9)
+# makefile (from `Makefile', line 12)
 OBJS = $(SRCS:.c=.o)
 # environment
 PWD = /Users/cole/42/ft_printf
@@ -74,28 +74,30 @@ HOME = /Users/cole
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/cole/Library/Application Support/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
+VSCODE_CODE_CACHE_PATH = /Users/cole/Library/Application Support/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
 # environment
 LOGNAME = cole
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
-# makefile (from `Makefile', line 11)
-LDIR = libft
+# makefile (from `Makefile', line 3)
+LDIR = libft/
 # environment
 XPC_FLAGS = 0x0
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from `Makefile', line 8)
-SRCS = $(wildcard *.c)
+# makefile (from `Makefile', line 10)
+SRCS = ft_utoa.c ft_ptoa.c ft_printf.c ft_print_arg.c ft_itox.c ft_get_mods.c ft_str_append.c ft_format.c
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 3)
+# makefile (from `Makefile', line 2)
+LIBFT = libft.a
+# makefile (from `Makefile', line 5)
 CC = gcc
 # default
 MAKE_VERSION := 3.81
@@ -104,7 +106,7 @@ USER = cole
 # makefile
 .DEFAULT_GOAL := all
 # makefile (from `Makefile', line 1)
-NAME = ftprintf.a
+NAME = libftprintf.a
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -116,7 +118,7 @@ TMPDIR = /var/folders/b4/nnmxnn_s10xf5bndzfpgcm440000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/cole/Library/Application Support/Code/1.67.0-main.sock
+VSCODE_IPC_HOOK = /Users/cole/Library/Application Support/Code/1.67.1-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -147,12 +149,12 @@ SUFFIXES :=
 MAKELEVEL := 0
 # environment
 LANG = C
-# makefile (from `Makefile', line 5)
-AFLAGS = -crs
+# makefile (from `Makefile', line 7)
+AFLAGS = -rs
 # environment
-VSCODE_PID = 81323
+VSCODE_PID = 9635
 # variable set hash-table stats:
-# Load=69/1024=7%, Rehash=0, Collisions=7/105=7%
+# Load=70/1024=7%, Rehash=0, Collisions=5/105=5%
 
 # Pattern-specific Variable Values
 
@@ -160,9 +162,9 @@ VSCODE_PID = 81323
 
 # Directories
 
-# . (device 16777233, inode 3394126): 16 files, no impossibilities.
+# . (device 16777230, inode 3394126): 30 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 30 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -170,45 +172,19 @@ VSCODE_PID = 81323
 
 # Files
 
-all: ftprintf.a
+all: libft//libft.a libftprintf.a
 #  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-
-# Not a target:
-ft_print_arg.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-12 18:40:24
-#  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-test_printf.c:
+ft_printf.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-10 21:17:34
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-ft_printf.o: ft_get_mods.c ft_itox.c ft_print_arg.c ft_printf.c test_printf.c
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 20):
-	@$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-# Not a target:
-ft_get_mods.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-12 18:31:14
+#  Last modified 2022-05-18 19:39:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -223,75 +199,80 @@ ft_get_mods.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-12 19:15:53
+#  Last modified 2022-05-18 19:27:02
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-ftprintf.a: ft_get_mods.o ft_itox.o ft_print_arg.o ft_printf.o test_printf.o libft/libft.a
-#  Implicit rule search has not been done.
-#  File does not exist.
+# Not a target:
+ft_str_append.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-18 19:39:08
  
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-#  commands to execute (from `Makefile', line 17):
-	@ar $(AFLAGS) $@ $^
-	
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-test:
+test: libft//libft.a
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 44):
+#  commands to execute (from `Makefile', line 51):
 	@clear
-	@$(CC) $(CFLAGS) -o test $(SRCS) $(LDIR)/libft.a
+	@$(CC) $(CFLAGS) -o test $(SRCS) test_printf.c $(LDIR)$(LIBFT)
 	@./test
 	@$(RM) test
 	
 
-libft/libft.a:
+libft//libft.a:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 23):
-	@cd $(LDIR) && make
+#  Last modified 2022-05-18 19:39:08
+#  File has been updated.
+#  Successfully updated.
+#  commands to execute (from `Makefile', line 26):
+	@$(MAKE) -C $(LDIR)
 	
 
 dclean: fclean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 40):
+#  commands to execute (from `Makefile', line 47):
 	@$(RM) *.dSYM
+	
+
+bonus: all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.c.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 23):
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
 	
 
 fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 31):
+#  commands to execute (from `Makefile', line 37):
 	@$(RM) $(NAME)
+	@$(RM) $(LDIR)$(LIBFT)
 	
 
 # Not a target:
-ft_printf.c:
+ft_itox.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-12 14:59:23
+#  Last modified 2022-05-18 19:39:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-ft_itox.o: ft_get_mods.c ft_itox.c ft_print_arg.c ft_printf.c test_printf.c
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 20):
-	@$(CC) $(CFLAGS) -o $@ -c $<
-	
 
 # Not a target:
 .DEFAULT:
@@ -308,65 +289,70 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 27):
+#  commands to execute (from `Makefile', line 32):
 	@$(RM) $(OBJS)
-	
-
-ft_print_arg.o: ft_get_mods.c ft_itox.c ft_print_arg.c ft_printf.c test_printf.c
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 20):
-	@$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-test_printf.o: ft_get_mods.c ft_itox.c ft_print_arg.c ft_printf.c test_printf.c
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 20):
-	@$(CC) $(CFLAGS) -o $@ -c $<
-	
-
-ft_get_mods.o: ft_get_mods.c ft_itox.c ft_print_arg.c ft_printf.c test_printf.c
-#  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := ft_get_mods.o
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := ft_get_mods.c ft_itox.c ft_print_arg.c ft_printf.c test_printf.c
-# automatic
-# | := 
-# automatic
-# < := ft_get_mods.c
-# automatic
-# ^ := ft_get_mods.c ft_itox.c ft_print_arg.c ft_printf.c test_printf.c
-# automatic
-# ? := ft_get_mods.c ft_itox.c ft_print_arg.c ft_printf.c test_printf.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  commands to execute (from `Makefile', line 20):
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(RM) $(LDIR)*.o
 	
 
 # Not a target:
-ft_itox.c:
+ft_utoa.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-10 21:29:37
+#  Last modified 2022-05-18 19:39:08
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+ft_ptoa.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-18 19:39:08
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+ft_print_arg.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-18 19:39:08
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+ft_format.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-18 19:39:08
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+libftprintf.a: ft_utoa.o ft_ptoa.o ft_printf.o ft_print_arg.o ft_itox.o ft_get_mods.o ft_str_append.o ft_format.o libft//libft.a
+#  Implicit rule search has not been done.
+#  Last modified 2022-05-18 19:39:08
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 19):
+	@cp $(LDIR)$(LIBFT) $@
+	@ar $(AFLAGS) $@ $(OBJS)
+	
+
+# Not a target:
+ft_get_mods.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-18 19:39:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=21/1024=2%, Rehash=0, Collisions=0/71=0%
+# Load=21/1024=2%, Rehash=0, Collisions=0/51=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -378,6 +364,6 @@ ft_itox.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu May 12 19:17:47 2022
+# Finished Make data base on Sun May 22 09:40:13 2022
 
  
